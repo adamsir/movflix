@@ -10,7 +10,7 @@ export default async function Home({
   const currentPage = parseInt(page || "1");
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIES_API_KEY}&page=${page}&include_adult=false`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIES_API_KEY}&page=${currentPage}&include_adult=false`,
     { next: { revalidate: 3600 } }
   );
 
