@@ -1,8 +1,5 @@
 import Movies from "@/ui/movies";
 import Pagination from "@/ui/pagination";
-// @TODO: suspense with skeleton card
-import SkeletonCard from "@/ui/skeleton-card";
-import { Suspense } from "react";
 
 export default async function Home({
   searchParams,

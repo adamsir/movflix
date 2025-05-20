@@ -14,3 +14,9 @@ What is NOT done
 -- add filtering
 -- add proper modal
 -- add timer
+
+### POSTMORTEM changelog
+- better dialog
+- movie detail would be great with own url, but I skipped that for now
+- added .env.example filess
+- added similar movies in movie detail
