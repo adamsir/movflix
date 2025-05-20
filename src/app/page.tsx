@@ -1,5 +1,8 @@
 import Movies from "@/ui/movies";
 import Pagination from "@/ui/pagination";
+// @TODO: suspense with skeleton card
+import SkeletonCard from "@/ui/skeleton-card";
+import { Suspense } from "react";
 
 export default async function Home({
   searchParams,
@@ -18,10 +21,12 @@ export default async function Home({
   const data = await res.json();
 
   return (
-    <div>
-      <h1>Popular Movies</h1>
+    <div className="container mx-auto">
+      <h1 className="text-7xl font-black py-4">Movflix</h1>
       <Movies movies={data.results} />
-      <Pagination currentPage={currentPage} totalPages={data.total_pages} />
+      <div className="py-4">
+        <Pagination currentPage={currentPage} totalPages={data.total_pages} />
+      </div>
     </div>
   );
 }
