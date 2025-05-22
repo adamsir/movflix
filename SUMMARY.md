@@ -1,35 +1,36 @@
 ## What is done
 
-📄 Movie List & Pagination - SSR
+📄 Movie List & Pagination (SSR)  
 🎬 Movie Detail Modal
 
-## What is NOT done and **how I'd implement**
-I lost some time with next image configuration and pagination routing
+## What is NOT done and **how I’d implement it**
 
-#### Movie filtering
-The mechanism how to refresh the results will be the same as pagination.
+I lost some time with Next.js image configuration and pagination routing.
 
-I would use useState hook for each filter (multiselect, input[range]).
-To submit the filtered state, i would use Link component and pass the filter query string, which will re-call the homepage discovery endpoint with added filter parameters which are supported, so it makes things easier. 
+### 🔍 Movie Filtering  
+Refreshing the results would work the same way as pagination.  
+I'd use `useState` for each filter (e.g., multiselect, range input).  
+To apply filters, I’d use the `Link` component to update the query string—this would re-trigger the discovery endpoint with supported filter parameters.
 
-#### 🎬 Movie Detail Modal
-In the current state of the implementation, those data required for rendering additional information is already there..
+### 🎬 Movie Detail Modal  
+The data needed to render extra info is already available in the current state.
 
-#### ⏱ "Discovery Timer"
-This feature may collide with pagination of the main collection.
-For filtering adult content, I would pass a new query param which is supported by the discovery endpoint
+### ⏱ "Discovery Timer"  
+This might conflict with pagination. For filtering adult content, I’d add a new query param (already supported by the API).
 
-The most easiest way is to use a setInterval and use useRouter to visit a new url all wrapped in useEffect. I would change the page parameter(which is super-dirty) but it would make the trick..
+The simplest (though a bit hacky) approach is using `setInterval` inside a `useEffect`, and navigating to a new URL using `useRouter`. I’d update the `page` param directly to simulate rotation.
 
-To pause the interval, I need to use useRef to remember invervalId and useState for the remaining countdown time.. If the pause is going to be triggered, i would clear the interval and set new interval with remaining countdown time.. but thats kinda high level
+To support pause/resume, I’d store the `intervalId` in a `useRef`, and use `useState` to track the remaining countdown. On pause, I’d clear the interval and start a new one using the remaining time. It's a bit of a higher-level feature.
 
-## Notes on your process and decision making
-- it went well, but I've lost some time on unnecessary details
-- I picked tailwind and shadcn to speed up the delivery
+## Notes on process & decisions
 
+- Overall, it went well—though I lost time on minor setup issues.
+- Chose Tailwind and shadcn to speed up UI work.
+- In hindsight, I should’ve used `react-query` for better data handling.
 
 ## POSTMORTEM changelog
-- better dialog
-- movie detail would be great with own url, but I skipped that for now
-- added .env.example filess
-- added similar movies in movie detail
+
+- Improved dialog behavior  
+- Movie detail modal could use its own URL (skipped for now)  
+- Added `.env.example` files  
+- Included similar movies in the detail view
